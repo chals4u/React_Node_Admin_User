@@ -9,13 +9,16 @@ import {
 
 export const registerUser = (userData, history) => dispatch => {
     axios
-        .post("/api/register", userData)
-        .then(res => history.push("/login"))
-        .catch(err =>
+        .post("/api/registerUser", userData)
+        .then(res =>
+            localStorage.setItem("respdata", JSON.stringify(res.data)),
+           history.push("/register"))
+        .catch(err =>{
             dispatch({
                 type: GET_ERRORS,
                 payload: err.response.data
             })
+        }
         );
 };
 
@@ -30,10 +33,12 @@ export const loginUser = userData => dispatch => {
             dispatch(setCurrentUser(decoded));
         })
         .catch(err =>
-            dispatch({
-                type: GET_ERRORS,
-                payload: err.response.data
-            })
+            
+            console.log(err)
+            // dispatch({
+            //     type: GET_ERRORS,
+            //     payload: err.response.data
+            // })
         );
 };
 

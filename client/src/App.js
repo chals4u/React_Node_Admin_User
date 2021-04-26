@@ -1,5 +1,6 @@
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-import Dashboard from "./components/pages/Dashboard";
+// import Dashboard from "./components/pages/Dashboard";
+import Profile from "./components/pages/Profile";
 import React, { Component } from 'react';
 import Login from "./components/auth/Login";
 import NotFound from "./components/layout/NotFound";
@@ -10,8 +11,8 @@ import store from "./store";
 import jwt_decode from "jwt-decode";
 import setAuthToken from "./utils/setAuthToken";
 import { setCurrentUser, logoutUser } from "./actions/authActions";
-
 import './App.css';
+import '../node_modules/bootstrap/dist/css/bootstrap.css';
 import '../node_modules/bootstrap/dist/css/bootstrap.css';
 import '../node_modules/bootstrap/dist/js/bootstrap';
 import '../node_modules/font-awesome/css/font-awesome.css';
@@ -33,7 +34,7 @@ if (localStorage.jwtToken) {
 }
 
 class App extends Component {
-    render () {
+    render() {
         return (
             <Provider store={store}>
                 <Router>
@@ -43,7 +44,8 @@ class App extends Component {
                             <Route exact path="/register" component={Register} />
                             <Route exact path="/login" component={Login} />
                             <Switch>
-                                <PrivateRoute exact path="/dashboard" component={Dashboard} />
+                                <PrivateRoute exact path="/profile" component={Profile} />
+                                {/* <PrivateRoute exact path="/dashboard" component={Dashboard} /> */}
                                 <PrivateRoute exact path="/users" component={User} />
                             </Switch>
                             <Route exact path="*" component={NotFound} />

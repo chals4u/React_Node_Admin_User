@@ -7,7 +7,7 @@ const validateRegisterInput = require('../../validation/register');
 const validateLoginInput = require('../../validation/login');
 const validateUpdateUserInput = require('../../validation/updateUser');
 const User = require('../../models/User');
-
+const shortid = require("shortid");
 router.post('/user-add', (req, res) => {
     const { errors, isValid } = validateRegisterInput(req.body);
     if (!isValid) {
@@ -98,7 +98,9 @@ router.post('/login', (req, res) => {
             if (isMatch) {
                 const payload = {
                     id: user.id,
-                    name: user.name
+                    name: user.name,
+                    usertype:user.usertype,
+                    reflink:user.reflink
                 };
                 jwt.sign(
                     payload,
@@ -121,6 +123,38 @@ router.post('/login', (req, res) => {
         });
     });
 });
-
-
+router.post('/register', (req, res) => {
+    const { errors, isValid } = validateRegisterInput(req.body);
+    if (!isValid) {
+        return res.status(400).json(errors);
+    }
+    User.findOne({ email: req.body.email }).then(user => {
+        if (user) {
+            return res.status(400).json({ email: 'Email already exists' });
+        } else {
+            let shortId = shortid.generate();
+            while(shortId.indexOf('-')>=0){
+              shortId = shortid.generate();
+            }
+            const newUser = new User({
+                name: req.body.name,
+                email: req.body.email,
+                password: req.body.password,
+                usertype: req.body.usertype,
+                reflink:shortId
+            });
+            bcrypt.genSalt(10, (err, salt) => {
+                bcrypt.hash(newUser.password, salt, (err, hash) => {
+                    if (err) throw err;
+                    newUser.password = hash;
+                    newUser
+                        .save()
+                        .then(user => {
+                            return res.status(200).json({message: 'Registration Completed successfully.'})
+                        }).catch(err => console.log(err));
+                });
+            });
+        }
+    });
+});
 module.exports = router;

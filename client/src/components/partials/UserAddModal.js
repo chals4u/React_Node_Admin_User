@@ -80,7 +80,7 @@ class UserAddModal extends React.Component {
                                                 error={errors.name}
                                                 className={classnames("form-control", {
                                                     invalid: errors.name
-                                                })}/>
+                                                })} />
                                             <span className="text-danger">{errors.name}</span>
                                         </div>
                                     </div>
@@ -137,6 +137,17 @@ class UserAddModal extends React.Component {
                                                 })}
                                             />
                                             <span className="text-danger">{errors.password2}</span>
+                                        </div>
+                                    </div>
+                                    <div className="row mt-2">
+                                        <div className="col-md-3">
+                                            <label htmlFor="password2">User Type</label>
+                                        </div>
+                                        <div className="col-md-9">
+                                            <input type="radio" value="admin" id="usertype" name="usertype" onChange={this.onChangeValue} /> Administrator
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="radio" value="supervisor" name="usertype" id="usertype" onChange={this.onChangeValue} /> Supervisor
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="radio" value="user" name="usertype" id="usertype" onChange={this.onChangeValue} /> User
+                                <span className="text-danger">{errors.usertype}</span>
                                         </div>
                                     </div>
                                 </form>

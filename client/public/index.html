@@ -1,38 +1,103 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <link rel="shortcut icon" href="%PUBLIC_URL%/favicon.ico" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="theme-color" content="#000000" />
-    <!--
-      manifest.json provides metadata used when your web app is installed on a
-      user's mobile device or desktop. See https://developers.google.com/web/fundamentals/web-app-manifest/
-    -->
-    <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
-    <!--
-      Notice the use of %PUBLIC_URL% in the tags above.
-      It will be replaced with the URL of the `public` folder during the build.
-      Only files inside the `public` folder can be referenced from the HTML.
 
-      Unlike "/favicon.ico" or "favicon.ico", "%PUBLIC_URL%/favicon.ico" will
-      work correctly both with client-side routing and a non-root public URL.
-      Learn how to configure a non-root public URL by running `npm run build`.
-    -->
-    <title>Admin Panel</title>
-  </head>
-  <body>
-    <noscript>You need to enable JavaScript to run this app.</noscript>
-    <div id="root"></div>
-    <!--
-      This HTML file is a template.
-      If you open it directly in the browser, you will see an empty page.
+<head>
+  <meta charset="utf-8" />
+  <link rel="shortcut icon" href="%PUBLIC_URL%/favicon.ico" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#000000" />
+  <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.17.0/jquery.validate.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.17.0/additional-methods.js"></script>
+  <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700,900|Raleway:300,400,500,600,700,800,900" rel="stylesheet">
+  <link rel="stylesheet" href="%PUBLIC_URL%/assets/css/bootstrap.min.css">
+<link rel="stylesheet" href="%PUBLIC_URL%/assets/css/font-awesome.min.css">
+<link rel="stylesheet" href="%PUBLIC_URL%/assets/css/animate.css">
+<link rel="stylesheet" href="%PUBLIC_URL%/assets/css/owl.carousel.min.css">
+<link rel="stylesheet" href="%PUBLIC_URL%/assets/css/hover.css">
+<link rel="stylesheet" href="%PUBLIC_URL%/assets/css/lightbox.min.css">
+<link rel="stylesheet" href="%PUBLIC_URL%/assets/css/normalize.css">
+<link rel="stylesheet" href="%PUBLIC_URL%/assets/css/slicknav.min.css">
+<link rel="stylesheet" href="%PUBLIC_URL%/assets/css/main.css">
+<link rel="stylesheet" href="%PUBLIC_URL%/assets/css/responsive.css">
+<link rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap.min.css">
+<link href = "https://code.jquery.com/ui/1.10.4/themes/ui-lightness/jquery-ui.css" rel = "stylesheet">
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+  <title>Website Title</title>
+</head>
 
-      You can add webfonts, meta tags, or analytics to this file.
-      The build step will place the bundled scripts into the <body> tag.
+<body>
+  <noscript>You need to enable JavaScript to run this app.</noscript>
+  <div id="root"></div>
+  <script src="%PUBLIC_URL%/assets/js/vendor/modernizr-3.5.0.min.js"></script>
+    <!-- jQuery min js -->
+    <script src="%PUBLIC_URL%/assets/js/vendor/jquery-3.2.1.min.js"></script>
+    <!-- bootstrap js -->
+    <script src="%PUBLIC_URL%/assets/js/bootstrap.min.js"></script>
+    <!-- sticky js -->
+    <script src="%PUBLIC_URL%/assets/js/jquery.sticky.js"></script>
+    <!-- owl carousel js -->
+    <script src="%PUBLIC_URL%/assets/js/owl.carousel.min.js"></script>
+    <!-- jarallax js -->
+    <script src="%PUBLIC_URL%/assets/js/jarallax.min.js"></script>
+    <!-- waypoints js -->
+    <script src="%PUBLIC_URL%/assets/js/jquery.waypoints.min.js"></script>
+    <!-- barfiller js -->
+    <script src="%PUBLIC_URL%/assets/js/jquery.barfiller.js"></script>
+    <!-- countdown js -->
+    <script src="%PUBLIC_URL%/assets/js/jquery.countdown.min.js"></script>
+    <!-- countdown js -->
+    <script src="%PUBLIC_URL%/assets/js/isotope.min.js"></script>
+    <!-- lightbox js -->
+    <script src="%PUBLIC_URL%/assets/js/lightbox.min.js"></script>
+    <!-- scrollUp js -->
+    <script src="%PUBLIC_URL%/assets/js/jquery.scrollUp.min.js"></script>
+    <!-- slick js -->
+    <script src="%PUBLIC_URL%/assets/js/slicknav.min.js"></script>
+    <!-- plugins js -->
+    <script src="%PUBLIC_URL%/assets/js/plugins.js"></script>
+    <!-- main js -->
+    <script src="%PUBLIC_URL%/assets/js/main.js"></script>
+	<!--<script src = "https://code.jquery.com/jquery-1.10.2.js"></script>-->
+	      <script src = "https://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
+	<script>
+	
+         $(function() {
+            $( "#datepicker" ).datepicker();
+            
+         });
+		 $(function() {
+            $( "#datepicker1" ).datepicker();
+            
+         });
+		 $("#datepicker").datepicker({ dateFormat: "yy-mm-dd"});
+		 $("#datepicker1").datepicker({ dateFormat: "yy-mm-dd"});
+    </script>
+	
+	<!--<script src = "https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>-->
+	<script src = "https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+	<script src = "https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap.min.js"></script>
+	<script src="//cdn.tinymce.com/4/tinymce.min.js"></script>
+<script type="text/javascript" src="js/tinymce.js" ></script>
+<script>
+  $(window).on("scroll", function() {
+    if($(window).scrollTop() > 50) {
+        $(".menu-area").addClass("fixed-menu");
+    } else {
+        //remove the background property so it comes transparent again (defined in your css)
+       $(".menu-area").removeClass("fixed-menu");
+    }
+});
+function myFunction() {
+				
+					var copyText = document.getElementById("myInput");
+					copyText.select();
+					document.execCommand("copy");
+					alert("Copied the text: " + copyText.value);
+				
+			}
+			</script>
+ </body>
 
-      To begin the development, run `npm start` or `yarn start`.
-      To create a production bundle, use `npm run build` or `yarn build`.
-    -->
-  </body>
 </html>
